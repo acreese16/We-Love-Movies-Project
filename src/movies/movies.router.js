@@ -5,11 +5,10 @@ const reviewRouter = require("../reviews/reviews.router");
 const theatherRouter = require("../theaters/theaters.router");
 
 
-router.use("/:movieId/reviews", controller.movieExists, reviewRouter).get(controller.listReviews).all(methodNotAllowed);
-router.use("/:movieId/theaters", controller.movieExists, theatherRouter).get(controller.listTheaters).all(methodNotAllowed);
+router.use("/:movieId/reviews", controller.movieExists, reviewRouter);
+router.use("/:movieId/theaters", controller.movieExists, theatherRouter);
 
 router.route("/:movieId([0-9]+)").get(controller.read).all(methodNotAllowed);
-router.route("/movies").get(controller.list).all(methodNotAllowed);
 router.route("/").get(controller.list).all(methodNotAllowed);
 
 module.exports = router;
